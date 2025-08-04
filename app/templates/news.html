@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}最新訊息 - 杰鑫國際物流股份有限公司{% endblock %}
+
+{% block content %}
+<!-- 頁面標題 -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4 fw-bold mb-4">最新訊息</h1>
+                <p class="lead">掌握杰鑫最新動態與重要消息</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 新聞列表 -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                {% if news %}
+                    {% for news_item in news %}
+                    <article class="card mb-4 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h3 class="card-title fw-bold mb-0">{{ news_item.title }}</h3>
+                                <span class="badge bg-primary">
+                                    {{ news_item.date.strftime('%Y-%m-%d') if news_item.date else '' }}
+                                </span>
+                            </div>
+                            
+                            {% if news_item.content %}
+                            <p class="card-text text-muted mb-3">{{ news_item.content }}</p>
+                            {% endif %}
+                            
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">
+                                    <i class="fas fa-calendar-alt me-1"></i>
+                                    發布時間：{{ news_item.date.strftime('%Y年%m月%d日') if news_item.date else '未知' }}
+                                </small>
+                                
+                                {% if news_item.link_url %}
+                                <a href="{{ news_item.link_url }}" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-external-link-alt me-1"></i>查看詳情
+                                </a>
+                                {% else %}
+                                <a href="/news/{{ news_item.id }}" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-eye me-1"></i>閱讀更多
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </article>
+                    {% endfor %}
+                {% else %}
+                    <div class="text-center py-5">
+                        <i class="fas fa-newspaper display-1 text-muted mb-4"></i>
+                        <h3 class="text-muted">目前沒有新聞訊息</h3>
+                        <p class="text-muted">請稍後再來查看最新消息</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 相關連結 -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-4">
+                <h2 class="fw-bold">相關資源</h2>
+                <p class="text-muted">更多物流相關資訊</p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="d-grid gap-3">
+                    {% for link in external_links %}
+                    <a href="{{ link.url }}" target="_blank" class="btn btn-outline-primary">
+                        <i class="fas fa-external-link-alt me-2"></i>
+                        {{ link.name }}
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

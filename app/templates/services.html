@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+
+{% block title %}杰鑫服務 - 杰鑫國際物流股份有限公司{% endblock %}
+
+{% block content %}
+<!-- 頁面標題 -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4 fw-bold mb-4">杰鑫服務</h1>
+                <p class="lead">全方位物流解決方案，滿足您的各種需求</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 服務概述 -->
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="fw-bold mb-4">專業物流服務</h2>
+                <p class="lead text-muted">
+                    杰鑫國際物流憑藉多年的經驗和專業團隊，為客戶提供一站式的物流服務，從運輸承攬到倉儲管理，我們致力於為您創造最大價值。
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 服務項目詳細介紹 -->
+<section class="py-5 bg-light">
+    <div class="container">
+        {% for service in services %}
+        <div class="row mb-5 align-items-center">
+            <div class="col-lg-6 {% if loop.index is odd %}order-lg-1{% else %}order-lg-2{% endif %}">
+                <div class="p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        {% if service.icon_url %}
+                        <img src="{{ service.icon_url }}" alt="{{ service.name }}" class="me-3" style="height: 50px;">
+                        {% else %}
+                        <i class="fas fa-shipping-fast text-primary me-3" style="font-size: 2.5rem;"></i>
+                        {% endif %}
+                        <h3 class="fw-bold mb-0">{{ service.name }}</h3>
+                    </div>
+                    <p class="text-muted mb-4">{{ service.description or '提供專業可靠的' + service.name + '，滿足客戶多樣化需求。' }}</p>
+                    
+                    <!-- 根據服務類型顯示不同的特色 -->
+                    {% if '運輸承攬' in service.name %}
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>海運承攬服務</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>空運承攬服務</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>陸運承攬服務</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>多式聯運服務</li>
+                    </ul>
+                    {% elif '倉儲' in service.name %}
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>現代化倉儲設施</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>智慧化庫存管理</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>貨物包裝分揀</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>配送整合服務</li>
+                    </ul>
+                    {% elif '報關' in service.name %}
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>進出口報關代理</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>關稅諮詢服務</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>文件處理代辦</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>保稅業務處理</li>
+                    </ul>
+                    {% elif '國際物流' in service.name %}
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>全球運輸網絡</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>跨境電商物流</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>國際快遞服務</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>供應鏈管理</li>
+                    </ul>
+                    {% else %}
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>客製化解決方案</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>專業諮詢服務</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>24小時客戶服務</li>
+                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>彈性收費方案</li>
+                    </ul>
+                    {% endif %}
+                    
+                    <a href="/contact" class="btn btn-primary">
+                        <i class="fas fa-phone me-2"></i>諮詢服務
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 {% if loop.index is odd %}order-lg-2{% else %}order-lg-1{% endif %}">
+                <div class="text-center p-4">
+                    <!-- 這裡可以放服務相關的圖片或圖標 -->
+                    {% if '運輸承攬' in service.name %}
+                    <i class="fas fa-truck display-1 text-primary opacity-50"></i>
+                    {% elif '倉儲' in service.name %}
+                    <i class="fas fa-warehouse display-1 text-primary opacity-50"></i>
+                    {% elif '報關' in service.name %}
+                    <i class="fas fa-file-alt display-1 text-primary opacity-50"></i>
+                    {% elif '國際物流' in service.name %}
+                    <i class="fas fa-globe display-1 text-primary opacity-50"></i>
+                    {% else %}
+                    <i class="fas fa-cogs display-1 text-primary opacity-50"></i>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        {% if not loop.last %}
+        <hr class="my-5">
+        {% endif %}
+        {% endfor %}
+    </div>
+</section>
+
+<!-- 服務優勢 -->
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h2 class="fw-bold mb-4">為什麼選擇杰鑫？</h2>
+                <p class="text-muted">我們的專業優勢讓您的物流更順暢</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center p-4">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-certificate fa-2x"></i>
+                    </div>
+                    <h5 class="fw-bold">專業認證</h5>
+                    <p class="text-muted">具備海關執照與ISO-9001品質認證</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center p-4">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-clock fa-2x"></i>
+                    </div>
+                    <h5 class="fw-bold">快速響應</h5>
+                    <p class="text-muted">24小時客戶服務，快速處理各種需求</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center p-4">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-network-wired fa-2x"></i>
+                    </div>
+                    <h5 class="fw-bold">全球網絡</h5>
+                    <p class="text-muted">遍及全球的服務網絡與合作夥伴</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center p-4">
+                    <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-dollar-sign fa-2x"></i>
+                    </div>
+                    <h5 class="fw-bold">合理收費</h5>
+                    <p class="text-muted">透明公正的收費標準，物超所值</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 服務流程 -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h2 class="fw-bold mb-4">服務流程</h2>
+                <p class="text-muted">簡單四步驟，輕鬆享受專業物流服務</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="text-center">
+                    <div class="bg-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3 shadow" style="width: 100px; height: 100px;">
+                        <span class="display-4 fw-bold text-primary">1</span>
+                    </div>
+                    <h5 class="fw-bold">需求諮詢</h5>
+                    <p class="text-muted">聯繫我們，說明您的物流需求</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="text-center">
+                    <div class="bg-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3 shadow" style="width: 100px; height: 100px;">
+                        <span class="display-4 fw-bold text-primary">2</span>
+                    </div>
+                    <h5 class="fw-bold">方案規劃</h5>
+                    <p class="text-muted">專業團隊為您量身規劃最佳方案</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="text-center">
+                    <div class="bg-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3 shadow" style="width: 100px; height: 100px;">
+                        <span class="display-4 fw-bold text-primary">3</span>
+                    </div>
+                    <h5 class="fw-bold">執行服務</h5>
+                    <p class="text-muted">按照計劃執行物流服務作業</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="text-center">
+                    <div class="bg-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3 shadow" style="width: 100px; height: 100px;">
+                        <span class="display-4 fw-bold text-primary">4</span>
+                    </div>
+                    <h5 class="fw-bold">追蹤回饋</h5>
+                    <p class="text-muted">全程追蹤服務進度，確保滿意度</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 立即聯繫 -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="fw-bold mb-4">立即聯繫我們</h2>
+                <p class="lead text-muted mb-4">
+                    無論您需要什麼樣的物流服務，我們的專業團隊都能為您提供最適合的解決方案。
+                </p>
+                <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                    <a href="/contact" class="btn btn-primary btn-lg">
+                        <i class="fas fa-phone me-2"></i>立即諮詢
+                    </a>
+                    <a href="mailto:info@jshine.com.tw" class="btn btn-outline-primary btn-lg">
+                        <i class="fas fa-envelope me-2"></i>郵件聯繫
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

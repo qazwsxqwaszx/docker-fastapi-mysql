@@ -1,0 +1,206 @@
+{% extends "base.html" %}
+
+{% block title %}首頁 - 杰鑫國際物流股份有限公司{% endblock %}
+
+{% block content %}
+<!-- 英雄區塊 -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">專業國際物流服務</h1>
+                <p class="lead mb-4">杰鑫國際物流提供全方位的物流解決方案，從運輸承攬到倉儲管理，我們是您最可靠的合作夥伴。</p>
+                <a href="/services" class="btn btn-warning btn-lg">了解服務</a>
+            </div>
+            <div class="col-lg-6 text-center">
+                <i class="fas fa-globe display-1 text-warning opacity-50"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 服務項目 -->
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h2 class="fw-bold mb-3">杰鑫的服務</h2>
+                <p class="text-muted">我們提供全方位的物流服務，滿足您的各種需求</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            {% for service in services %}
+            <div class="col-lg-4 col-md-6">
+                <div class="card service-card h-100">
+                    <div class="card-body text-center p-4">
+                        {% if service.icon_url %}
+                        <img src="{{ service.icon_url }}" alt="{{ service.name }}" class="mb-3" style="height: 60px;">
+                        {% else %}
+                        <i class="fas fa-truck feature-icon"></i>
+                        {% endif %}
+                        <h5 class="card-title fw-bold">{{ service.name }}</h5>
+                        {% if service.description %}
+                        <p class="card-text text-muted">{{ service.description }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- 網站特色 -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h2 class="fw-bold mb-3">網站特色</h2>
+                <p class="text-muted">為什麼選擇杰鑫國際物流？</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            {% for feature in features %}
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-item">
+                    {% if feature.icon_class %}
+                    <i class="{{ feature.icon_class }} feature-icon"></i>
+                    {% else %}
+                    <i class="fas fa-check-circle feature-icon"></i>
+                    {% endif %}
+                    <p class="fw-bold mb-0">{{ feature.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- 貨櫃動態查詢系統 -->
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h2 class="fw-bold mb-3">貨櫃動態查詢系統</h2>
+                <p class="text-muted">快速查詢您的貨櫃運輸狀態</p>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <form class="row g-3">
+                            <div class="col-md-6">
+                                <label for="containerNumber" class="form-label">貨櫃號碼</label>
+                                <input type="text" class="form-control" id="containerNumber" placeholder="請輸入貨櫃號碼">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="queryType" class="form-label">查詢類型</label>
+                                <select class="form-select" id="queryType">
+                                    <option selected>選擇查詢類型</option>
+                                    <option value="container">貨櫃查詢</option>
+                                    <option value="booking">訂艙查詢</option>
+                                    <option value="bl">提單查詢</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label">&nbsp;</label>
+                                <button type="submit" class="btn btn-primary w-100">
+                                    <i class="fas fa-search me-1"></i>查詢
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <!-- 合作夥伴 Logo -->
+                        <div class="text-center mt-4">
+                            <p class="text-muted mb-3">合作查詢平台：</p>
+                            <div class="d-flex flex-wrap justify-content-center align-items-center">
+                                {% for partner in partner_logos %}
+                                <a href="{{ partner.link_url }}" target="_blank" class="me-3">
+                                    <img src="{{ partner.logo_url }}" alt="{{ partner.name }}" class="partner-logo">
+                                </a>
+                                {% endfor %}
+                                <!-- 預設合作夥伴（如果資料庫沒有資料） -->
+                                {% if not partner_logos %}
+                                <span class="badge bg-secondary me-2">COSCO</span>
+                                <span class="badge bg-secondary me-2">EVERGREEN</span>
+                                <span class="badge bg-secondary me-2">YANG MING</span>
+                                <span class="badge bg-secondary me-2">OOCL</span>
+                                <span class="badge bg-secondary me-2">MSC</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 最新訊息 -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h2 class="fw-bold mb-3">最新訊息</h2>
+                <p class="text-muted">掌握杰鑫最新動態與消息</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                {% for news_item in news %}
+                <div class="news-item">
+                    <h5 class="fw-bold mb-2">
+                        {% if news_item.link_url %}
+                        <a href="{{ news_item.link_url }}" class="text-decoration-none">{{ news_item.title }}</a>
+                        {% else %}
+                        {{ news_item.title }}
+                        {% endif %}
+                    </h5>
+                    {% if news_item.content %}
+                    <p class="text-muted mb-2">{{ news_item.content }}</p>
+                    {% endif %}
+                    <p class="news-date">
+                        <i class="fas fa-calendar-alt me-1"></i>
+                        {{ news_item.date.strftime('%Y-%m-%d') if news_item.date else '' }}
+                    </p>
+                </div>
+                {% endfor %}
+                
+                <div class="text-center mt-4">
+                    <a href="/news" class="btn btn-outline-primary">查看更多消息</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 其他相關連結 -->
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h2 class="fw-bold mb-3">其他相關連結</h2>
+                <p class="text-muted">便民服務連結</p>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="d-grid gap-3">
+                    {% for link in external_links %}
+                    <a href="{{ link.url }}" target="_blank" class="btn btn-outline-primary btn-lg">
+                        <i class="fas fa-external-link-alt me-2"></i>
+                        {{ link.name }}
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

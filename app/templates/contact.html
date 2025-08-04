@@ -1,0 +1,250 @@
+{% extends "base.html" %}
+
+{% block title %}業務聯絡 - 杰鑫國際物流股份有限公司{% endblock %}
+
+{% block content %}
+<!-- 頁面標題 -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4 fw-bold mb-4">業務聯絡</h1>
+                <p class="lead">我們期待為您提供專業的物流服務</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 聯絡方式 -->
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            <!-- 聯絡資訊 -->
+            <div class="col-lg-6">
+                <div class="h-100">
+                    <h2 class="fw-bold mb-4">聯絡資訊</h2>
+                    
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <div class="d-flex align-items-start">
+                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; min-width: 50px;">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-2">公司地址</h5>
+                                    <p class="text-muted mb-0">台北市信義區信義路五段7號</p>
+                                    <p class="text-muted">101台灣</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-12">
+                            <div class="d-flex align-items-start">
+                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; min-width: 50px;">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-2">聯絡電話</h5>
+                                    <p class="text-muted mb-1">總機：(02) 1234-5678</p>
+                                    <p class="text-muted mb-1">業務部：(02) 1234-5679</p>
+                                    <p class="text-muted">客服專線：0800-123-456</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-12">
+                            <div class="d-flex align-items-start">
+                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; min-width: 50px;">
+                                    <i class="fas fa-fax"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-2">傳真號碼</h5>
+                                    <p class="text-muted mb-0">(02) 1234-5680</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-12">
+                            <div class="d-flex align-items-start">
+                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; min-width: 50px;">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-2">電子信箱</h5>
+                                    <p class="text-muted mb-1">一般聯絡：info@jshine.com.tw</p>
+                                    <p class="text-muted mb-1">業務諮詢：sales@jshine.com.tw</p>
+                                    <p class="text-muted">客服信箱：service@jshine.com.tw</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-12">
+                            <div class="d-flex align-items-start">
+                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px; min-width: 50px;">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-2">營業時間</h5>
+                                    <p class="text-muted mb-1">週一至週五：08:00 - 18:00</p>
+                                    <p class="text-muted mb-1">週六：09:00 - 17:00</p>
+                                    <p class="text-muted">週日及國定假日：休息</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 聯絡表單 -->
+            <div class="col-lg-6">
+                <div class="card shadow">
+                    <div class="card-body p-4">
+                        <h2 class="fw-bold mb-4">聯絡表單</h2>
+                        <form id="contactForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="firstName" class="form-label">姓名 <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="firstName" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="company" class="form-label">公司名稱</label>
+                                    <input type="text" class="form-control" id="company">
+                                </div>
+                                <div class="col-12">
+                                    <label for="email" class="form-label">電子信箱 <span class="text-danger">*</span></label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="phone" class="form-label">聯絡電話 <span class="text-danger">*</span></label>
+                                    <input type="tel" class="form-control" id="phone" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="service" class="form-label">服務類型</label>
+                                    <select class="form-select" id="service">
+                                        <option selected>請選擇服務類型</option>
+                                        <option value="transport">運輸承攬業務</option>
+                                        <option value="warehouse">倉儲整合服務</option>
+                                        <option value="customs">報關相關服務</option>
+                                        <option value="international">國際物流服務</option>
+                                        <option value="other">其他物流服務</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="subject" class="form-label">主旨 <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="subject" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="message" class="form-label">詳細內容 <span class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="message" rows="5" required placeholder="請詳細說明您的需求..."></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="privacy" required>
+                                        <label class="form-check-label" for="privacy">
+                                            我同意杰鑫國際物流處理我的個人資料用於回覆諮詢 <span class="text-danger">*</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-lg w-100">
+                                        <i class="fas fa-paper-plane me-2"></i>送出諮詢
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 地圖位置 -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h2 class="fw-bold mb-3">交通位置</h2>
+                <p class="text-muted">歡迎親臨我們的辦公室</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body p-0">
+                        <!-- 這裡可以嵌入 Google Maps 或其他地圖服務 -->
+                        <div class="bg-light text-center py-5">
+                            <i class="fas fa-map-marked-alt display-1 text-muted mb-3"></i>
+                            <h4 class="text-muted">地圖位置</h4>
+                            <p class="text-muted">台北市信義區信義路五段7號</p>
+                            <a href="https://www.google.com/maps/search/台北市信義區信義路五段7號" target="_blank" class="btn btn-outline-primary">
+                                <i class="fas fa-external-link-alt me-2"></i>在 Google Maps 中查看
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 交通資訊 -->
+        <div class="row mt-4">
+            <div class="col-lg-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="fw-bold mb-3">
+                            <i class="fas fa-subway text-primary me-2"></i>大眾運輸
+                        </h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <strong>捷運：</strong>信義線「市政府站」步行約5分鐘
+                            </li>
+                            <li class="mb-2">
+                                <strong>公車：</strong>多線公車可達，請搜尋「信義路五段」站牌
+                            </li>
+                            <li class="mb-2">
+                                <strong>高鐵/台鐵：</strong>台北車站轉乘捷運約20分鐘
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="fw-bold mb-3">
+                            <i class="fas fa-car text-primary me-2"></i>自行開車
+                        </h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <strong>國道一號：</strong>台北交流道→信義路往信義區方向
+                            </li>
+                            <li class="mb-2">
+                                <strong>停車資訊：</strong>附近有多個收費停車場
+                            </li>
+                            <li class="mb-2">
+                                <strong>建議路線：</strong>建議使用導航系統規劃最佳路線
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // 這裡可以添加表單提交邏輯
+    // 目前只是顯示成功訊息
+    alert('感謝您的諮詢！我們會盡快與您聯繫。');
+    
+    // 重設表單
+    this.reset();
+});
+</script>
+{% endblock %}
